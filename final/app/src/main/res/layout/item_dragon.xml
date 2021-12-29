@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dragon"
+            type="com.raywenderlich.android.uspace.ui.models.Dragon" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_padding">
+
+        <ImageView
+            android:id="@+id/dragon_image"
+            android:layout_width="@dimen/item_image_size"
+            android:layout_height="@dimen/item_image_size"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{dragon.images[0]}"
+            app:placeholder="@{@drawable/splash_background}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dragon_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="@{dragon.name}"
+            app:layout_constraintStart_toEndOf="@id/dragon_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="dragon Name" />
+
+        <TextView
+            android:id="@+id/dragon_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:paddingTop="@dimen/text_padding"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:date="@{dragon.firstFlightDate}"
+            app:layout_constraintStart_toEndOf="@id/dragon_image"
+            app:layout_constraintTop_toBottomOf="@id/dragon_name" />
+
+        <TextView
+            android:id="@+id/dragon_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:paddingTop="@dimen/text_padding"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:capitalizeFirst="@{dragon.type}"
+            app:layout_constraintStart_toEndOf="@id/dragon_image"
+            app:layout_constraintTop_toBottomOf="@id/dragon_date" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
